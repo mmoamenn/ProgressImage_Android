@@ -1,7 +1,9 @@
 package com.bluehomestudio.progressimage;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.AnimatorRes;
 import android.util.AttributeSet;
 
 /**
@@ -12,19 +14,21 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
     private final int FAD = 0, SCALE = 1, ROTATION = 2, SHAKE = 3;
     private Context mContext;
     private int animationType;
+    private Animator mainAnimator;
+    private boolean stopAnimation;
 
     public ProgressPicture(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         mContext = context;
-        //handelAttributes(attrs);
+        handelAttributes(attrs);
     }
 
     public ProgressPicture(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         mContext = context;
-        //handelAttributes(attrs);
+        handelAttributes(attrs);
     }
 
     /**
@@ -38,6 +42,7 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
 
         try {
             animationType = typedArray.getInt(R.styleable.ProgressPicture_animation, 0);
+            attachAnimation(animationType);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,19 +58,64 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
         switch (animationType) {
 
             case FAD:
+                startAnimation(R.animator.fade_in_out);
                 break;
 
             case SCALE:
+                startAnimation(R.animator.scale_small_larg);
                 break;
 
             case ROTATION:
+                startAnimation(R.animator.rotate_full_round);
                 break;
 
             case SHAKE:
+                startAnimation(R.animator.shake);
                 break;
 
         }
 
+    }
+
+
+    private void startAnimation(@AnimatorRes int id) {
+
+        mainAnimator.setTarget(this);
+        mainAnimator.start();
+        stopAnimation = true;
+        mainAnimator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (stopAnimation) {
+                    mainAnimator.start();
+                } else {
+                    mainAnimator.cancel();
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+    }
+
+    public void starAnimation() {
+        mainAnimator.start();
+    }
+
+    public void stopAnimation() {
+        stopAnimation = false;
     }
 
 }
