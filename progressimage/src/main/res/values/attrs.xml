@@ -7,7 +7,8 @@
             <enum name="fade" value="0" />
             <enum name="scale" value="1" />
             <enum name="rotate" value="2" />
-            <enum name="shake" value="3" />
+            <enum name="rotate_x" value="3" />
+            <enum name="rotate_y" value="4" />
         </attr>
 
     </declare-styleable>

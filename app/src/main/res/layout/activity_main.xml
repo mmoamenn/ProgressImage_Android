@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ProgressPicture="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bluehomestudio.demoprogressimage.MainActivity">
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.bluehomestudio.progressimage.ProgressPicture
+        android:id="@+id/pp_progress"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_action_name"
+        android:text="Hello World!"
+        ProgressPicture:animation="fade" />
+
 
     <com.bluehomestudio.progressimage.ProgressPicture
         android:layout_width="60dp"
@@ -12,6 +23,31 @@
         android:layout_centerInParent="true"
         android:src="@drawable/ic_action_name"
         android:text="Hello World!"
-        ProgressPicture:animation="shake" />
+        ProgressPicture:animation="scale" />
 
-</RelativeLayout>
+    <com.bluehomestudio.progressimage.ProgressPicture
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_action_name"
+        android:text="Hello World!"
+        ProgressPicture:animation="rotate" />
+
+    <com.bluehomestudio.progressimage.ProgressPicture
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_action_name"
+        android:text="Hello World!"
+        ProgressPicture:animation="rotate_x" />
+
+    <com.bluehomestudio.progressimage.ProgressPicture
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_action_name"
+        android:text="Hello World!"
+        ProgressPicture:animation="rotate_y" />
+
+
+</LinearLayout>

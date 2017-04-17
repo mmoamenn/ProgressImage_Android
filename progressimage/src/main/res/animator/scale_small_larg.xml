@@ -17,12 +17,12 @@
 
     <set android:ordering="together">
         <objectAnimator
-            android:duration="2000"
+            android:duration="200"
             android:propertyName="scaleX"
             android:valueTo="1f" />
 
         <objectAnimator
-            android:duration="2000"
+            android:duration="200"
             android:propertyName="scaleY"
             android:valueTo="1f" />
     </set>

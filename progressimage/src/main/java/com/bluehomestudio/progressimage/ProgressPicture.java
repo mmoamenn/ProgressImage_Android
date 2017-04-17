@@ -12,7 +12,9 @@ import android.util.AttributeSet;
  */
 
 public class ProgressPicture extends android.support.v7.widget.AppCompatImageView {
-    private final int FAD = 0, SCALE = 1, ROTATION = 2, SHAKE = 3;
+    // Final variables
+    private final int FAD = 0, SCALE = 1, ROTATION = 2, ROTATE_X = 3, ROTATE_Y = 4;
+
     private Context mContext;
     private int animationType;
     private Animator mainAnimator;
@@ -67,11 +69,15 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
                 break;
 
             case ROTATION:
-                startAnimation(R.animator.rotate_full_round);
+                startAnimation(R.animator.rotate);
                 break;
 
-            case SHAKE:
-                startAnimation(R.animator.shake);
+            case ROTATE_X:
+                startAnimation(R.animator.rotate_x);
+                break;
+
+            case ROTATE_Y:
+                startAnimation(R.animator.rotate_y);
                 break;
 
         }
@@ -79,6 +85,11 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
     }
 
 
+    /**
+     * Function to attach animation to view
+     *
+     * @param id Animation resource ID
+     */
     private void startAnimation(@AnimatorRes int id) {
 
         mainAnimator = AnimatorInflater.loadAnimator(getContext(), id);
@@ -95,8 +106,6 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
             public void onAnimationEnd(Animator animation) {
                 if (stopAnimation) {
                     mainAnimator.start();
-                } else {
-                    mainAnimator.cancel();
                 }
             }
 
@@ -112,10 +121,26 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
         });
     }
 
-    public void starAnimation() {
+    /**
+     * Function to start animate progress
+     */
+    public void startAnimation() {
+        setVisibility(VISIBLE);
+        stopAnimation = true;
         mainAnimator.start();
     }
 
+    /**
+     * Function to stop animating and hide progress
+     */
+    public void stopAnimationAndHide() {
+        setVisibility(GONE);
+        stopAnimation();
+    }
+
+    /**
+     * Function to stop animating
+     */
     public void stopAnimation() {
         stopAnimation = false;
     }
