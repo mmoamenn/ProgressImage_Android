@@ -56,7 +56,7 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
      *
      * @param animationType Animation type id
      */
-    public void attachAnimation(int animationType) {
+    private void attachAnimation(int animationType) {
 
         switch (animationType) {
 
