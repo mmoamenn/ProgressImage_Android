@@ -1,6 +1,7 @@
 package com.bluehomestudio.progressimage;
 
 import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.AnimatorRes;
@@ -80,6 +81,7 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
 
     private void startAnimation(@AnimatorRes int id) {
 
+        mainAnimator = AnimatorInflater.loadAnimator(getContext(), id);
         mainAnimator.setTarget(this);
         mainAnimator.start();
         stopAnimation = true;
