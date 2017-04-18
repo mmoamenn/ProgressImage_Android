@@ -15,10 +15,25 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
     // Final variables
     private final int FAD = 0, SCALE = 1, ROTATION = 2, ROTATE_X = 3, ROTATE_Y = 4;
 
+    // Main component references
     private Context mContext;
     private int animationType;
     private Animator mainAnimator;
     private boolean stopAnimation;
+
+    /**
+     * Enums of the animations
+     */
+    public enum Animations {
+        FAD, SCALE, ROTATION, ROTATE_X, ROTATE_Y
+    }
+
+    public ProgressPicture(Context context, Animations animations) {
+        super(context);
+
+        mContext = context;
+        handelAnimation(animations);
+    }
 
     public ProgressPicture(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -84,6 +99,27 @@ public class ProgressPicture extends android.support.v7.widget.AppCompatImageVie
 
     }
 
+
+    /**
+     * Function to handel animation
+     *
+     * @param animations Type of animation
+     */
+    private void handelAnimation(Animations animations) {
+
+        if (animations == Animations.FAD) {
+            startAnimation(R.animator.fade_in_out);
+        } else if (animations == Animations.SCALE) {
+            startAnimation(R.animator.scale_small_larg);
+        } else if (animations == Animations.ROTATION) {
+            startAnimation(R.animator.rotate);
+        } else if (animations == Animations.ROTATE_X) {
+            startAnimation(R.animator.rotate_x);
+        } else if (animations == Animations.ROTATE_Y) {
+            attachAnimation(R.animator.rotate_y);
+        }
+
+    }
 
     /**
      * Function to attach animation to view
