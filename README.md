@@ -3,6 +3,13 @@
 Progress Image is a Library for modern progress view style put 
 your image/icon as a progress view for your application
 
+**Samples :**
+
+![Progress Image](https://github.com/mmoamenn/ProgressImage_Android/blob/master/sample/videotogif_2017.04.18_22.09.44.gif)
+
+![Progress Image](https://github.com/mmoamenn/ProgressImage_Android/blob/master/sample/videotogif_2017.04.18_22.08.12.gif)
+
+
 **Installation**
 
 Add it in your root build.gradle at the end of repositories:
