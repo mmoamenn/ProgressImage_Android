@@ -1,7 +1,6 @@
 # ProgressImage Android
 
-Progress Image is a Library for modern progress view style put 
-your image/icon as a progress view for your application
+ProgressImage is a Library for modern progress view style. Use any icon/image with progress view for your application
 
 **Samples :**
 
